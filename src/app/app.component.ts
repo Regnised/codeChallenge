@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   errorTab1;
   errorTab2;
   isAccountSaved: boolean;
+  savedID;
 
   account: Account = {} as Account;
 
@@ -50,13 +51,13 @@ export class AppComponent implements OnInit {
       }
     };
     try {
-      await API.post(this.apiName, '/subscriber', data);
+      const result = await API.post(this.apiName, '/subscriber', data);
+      this.savedID = result.id;
       this.email.reset('');
       this.firstName.reset('');
       this.lastName.reset('');
       this.isAccountSaved = true;
     } catch (e) {
-      console.log('Error: ', e.message);
       this.errorTab1 = e.message;
       this.isAccountSaved = false;
     }

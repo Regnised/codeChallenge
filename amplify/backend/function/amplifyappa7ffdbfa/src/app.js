@@ -35,10 +35,11 @@ app.get('/subscriber', function(req, res) {
 });
 
 app.post('/subscriber', function(req, res) {
+  const generatedId = id();
   const params = {
     TableName : STORAGE_TABLE_NAME,
     Item: {
-      recordID: id(),
+      recordID: generatedId,
       email: req.body.email,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -47,7 +48,7 @@ app.post('/subscriber', function(req, res) {
   }
   docClient.put(params, (err, data) => {
     if (err) res.json({ err })
-    else res.json({ success: 'Account created successfully!' })
+    else res.json({ success: 'Account created successfully!', id: generatedId })
   })
 });
 

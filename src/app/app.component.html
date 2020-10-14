@@ -17,7 +17,7 @@
           </mat-form-field>
           <button [disabled]="!email.valid || !firstName.valid || !lastName.valid" mat-raised-button color="primary" (click)="onCreate()">Save</button>
           <div *ngIf="isAccountSaved" c>
-            <p>Account saved</p>
+            <p>Account saved ID: {{savedID}}</p>
           </div>
           <div *ngIf="errorTab1" class="results error">{{errorTab1}}</div>
         </div>
