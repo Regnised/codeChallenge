@@ -1,0 +1,13 @@
+.create-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.results {
+  padding: 15px;
+}
+
+.error {
+  color: darkred;
+}
